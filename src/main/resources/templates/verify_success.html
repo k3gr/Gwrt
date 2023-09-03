@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Weryfikacja udana | Liga FDS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/6b105a924a.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/styles/forms.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="background-league-img"><img src="/images/monza.png" alt="" srcset=""></div>
+    <nav class="navbar">
+        <div class="burger" id="burger">
+            <i class="fas fa-bars show" id="fas fa-bars"></i>
+            <i class="fas fa-times" id="fas fa-times"></i>
+        </div>
+        <div class="nav-left">
+            <a href="/liga" class="logo">
+                <img alt="logo ligi fsd" src="/images/logo_fsd.png">
+            </a>
+            <a href="/liga" class="logo-fsd">
+                Liga Fast Drive School
+            </a>
+        </div>
+        <div class="categories">
+            <ul>
+                <li class="main-li"><a href="/">GWR Team</a></li>
+                <li><a href="/liga/kontakt">Kontakt</a></li>
+                <div class="socials-mob">
+                    <a href="https://facebook.com"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://twitch.com"><i
+                            class="fa-brands fa-twitch"></i></a>
+                    <a href="https://discord.com/channels/730309320876752996/730313785335873637"><i
+                            class="fa-brands fa-discord"></i></a>
+                    <a href="https://youtube.com"><i
+                            class="fa-brands fa-youtube"></i></a>
+                </div>
+            </ul>
+        </div>
+    </nav>
+    <div class="verify-panel">
+        <h1>Weryfikacja użytkownika</h1>
+        <p><i class="fa-solid fa-circle-check"></i></p>
+        <p>Gratulacje!</p>
+        <p>Weryfikacja zakończona sukcesem.</p>
+        <p class="verify-login-button"><a th:href="@{/logowanie}">Zaloguj się</a></p>
+    </div>
+    <div th:replace="fragments :: sponsors"></div>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+<script src="js/show-button.js"></script>
+<script src="js/burger.js"></script>
+<script>window.addEventListener("scroll", function () {
+    var navbar = document.querySelector(".navbar");
+    var logo = document.querySelector(".logo");
+    navbar.classList.toggle("sticky", window.scrollY > 100);
+    logo.classList.toggle("sticky", window.scrollY > 100);
+})</script>
+</body>
+</html><!DOCTYPE html>

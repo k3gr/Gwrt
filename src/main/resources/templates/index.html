@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Gray Wolf Racing Team</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/6b105a924a.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/styles/forms.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.js" defer></script>
+</head>
+<body>
+<div class="container">
+    <div class="background-car">
+        <div class="arrow" id="arrow"><i class="fa-solid fa-arrow-up"></i></div>
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="/" class="logo">
+                    <img alt="logo zespołu GWR" src="/images/gwr_logo.png">
+                </a>
+            </div>
+            <div class="categories">
+                <ul>
+                    <li class="main-li-red"><a th:href="@{/}">Strona główna</a></li>
+                    <li><a th:href="@{/kontakt}">Kontakt</a></li>
+                </ul>
+                <div class="socials-mob">
+                    <a href="https://facebook.com"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://twitch.com"><i
+                            class="fa-brands fa-twitch"></i></a>
+                    <a href="https://discord.com/channels/730309320876752996/730313785335873637"><i
+                            class="fa-brands fa-discord"></i></a>
+                    <a href="https://youtube.com"><i
+                            class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div>
+                <a href="/liga" class="login-button-main"><span></span>Liga FDS</a>
+            </div>
+        </nav>
+    </div>
+    <div class="burger" id="burger">
+        <i class="fas fa-bars show" id="fas fa-bars"></i>
+        <i class="fas fa-times" id="fas fa-times"></i>
+    </div>
+    <div class="sponsors">
+        <a href="http://www.volveno.com"><img src="/images/volveno.png" alt="Volveno"></a>
+        <a href="https://podjaskolka.pl/"><img src="/images/hotel.png" alt="Hotel pod Jaskółką"></a>
+        <a href="http://www.farby-przemyslowe.com/"><img src="/images/baltic.png" alt="Baltic Polska"></a>
+        <a href="http://obrobka-metalu.com/"><img src="/images/obrobka-metalu.png" alt="Obróbka Metalu"></a>
+        <a href="https://www.instagram.com/gepettomods/?fbclid=IwAR0jFiSW1JMEv8J49W0Hjzxoj_iKKzJYs7NeYfIMYow28pl7v-M5p6CFw4s"><img
+                src="/images/gepetto.png" alt="Gepetto Mods"></a>
+    </div>
+    <div class="next-race-container">
+        <div class="next-race">
+            <h1>Następny wyścig:</h1>
+            <h2 id="trackname" style="color: #8a0000" class="next-race-event-name">
+                Creventic Spa 12h
+            </h2>
+            <div id="countdown" class="countdown">
+                <div class="time">
+                    <h2 id="days"></h2>
+                    <p style="color: #8a0000">Dni</p>
+                </div>
+                <div class="time">
+                    <h2 id="hours"></h2>
+                    <p style="color: #8a0000">Godzin</p>
+                </div>
+                <div class="time">
+                    <h2 id="minutes"></h2>
+                    <p style="color: #8a0000">Minut</p>
+                </div>
+                <div class="time">
+                    <h2 id="seconds"></h2>
+                    <p style="color: #8a0000">Sekund</p>
+                </div>
+            </div>
+            <p id="racedate" style="background-color: #f5f5f5" class="next-race-date">02.04.2022</p>
+        </div>
+        <div class="track-logo">
+            <img class="track-image" id="track-img" alt="obrazek toru"
+                 src="https://media.discordapp.net/attachments/884122508897423390/960155048397144074/watkins.png">
+            <p id="full-name"></p>
+            <p><span id="track-config"> </span></p>
+        </div>
+    </div>
+    <div class="gallery-container">
+        <div class="gallery">
+            <div class="gallery-box"><img src="images/gallery/gwrt0.png" alt="Zdjęcie kierowcy Gray Wolf Racing"></div>
+            <div class="gallery-box"><img src="images/gallery/gwrt1.png" alt="Zdjęcie kierowcy Gray Wolf Racing"></div>
+            <div class="gallery-box"><img src="images/gallery/gwrt2.png" alt="Zdjęcie kierowcy Gray Wolf Racing"></div>
+            <div class="gallery-box"><img src="images/gallery/gwrt5.png" alt="Zdjęcie kierowcy Gray Wolf Racing"></div>
+            <div class="gallery-box"><img src="images/gallery/gwrt4.png" alt="Zdjęcie kierowcy Gray Wolf Racing"></div>
+            <div class="gallery-box"><img src="images/gallery/gwrt3.png" alt="Zdjęcie kierowcy Gray Wolf Racing"></div>
+            <div class="gallery-box"><img src="images/gallery/gwrt6.png" alt="Zdjęcie kierowcy Gray Wolf Racing"></div>
+            <div class="gallery-box"><img src="images/gallery/gwrt7.png" alt="Zdjęcie kierowcy Gray Wolf Racing"></div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-box">
+            <div class="socials">
+                <div class="social"><a th:href="@{https://facebook.com}"><i
+                        class="fa-brands fa-facebook-f"></i></a></div>
+                <div class="social"><a th:href="@{https://twitch.com}"><i
+                        class="fa-brands fa-twitch"></i></a></div>
+                <div class="social"><a
+                        th:href="@{https://discord.com/channels/730309320876752996/730313785335873637}"><i
+                        class="fa-brands fa-discord"></i></a></div>
+                <div class="social"><a th:href="@{https://youtube.com}"><i
+                        class="fa-brands fa-youtube"></i></a></div>
+            </div>
+            <div class="footer-nav">
+                <a href="/polityka-prywatnosci"><span>Polityka prywatności</span></a>
+                <a href="https://www.twitch.tv/jarek_irek"><span>Transmisje wyścigów</span></a>
+            </div>
+            <div class="footer-name"><span style="color: #8a0000">© Gray Wolf Racing 2022</span><span style="color: #8a0000" class="sep"> | </span>
+                <p class="project" >Projekt i realizacja </p>
+                <span class="project-ref"><a href="https://github.com/k3gr">k3gr</a></span>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="/js/countdown.js"></script>
+<script src="/js/burger.js"></script>
+<script>window.addEventListener("scroll", function () {
+    var navbar = document.querySelector(".navbar");
+    var logo = document.querySelector(".logo");
+    var arrow = document.querySelector("#arrow");
+    navbar.classList.toggle("sticky", window.scrollY > 100);
+    logo.classList.toggle("sticky", window.scrollY > 100);
+    arrow.classList.toggle("sticky", window.scrollY > 100);
+})</script>
+<script>var arrowup = document.querySelector("#arrow");
+arrowup.addEventListener("click", function (){
+    $("html, body").animate({scrollTop: 0}, "slow");
+})
+</script>
+<script>window.addEventListener("load", function () {
+    window.wpcc.init({
+        "border": "normal",
+        "colors": {
+            "popup": {"background": "#0082b1", "text": "#ffffff", "border": "#000000"},
+            "button": {"background": "#000000", "text": "#ffffff"}
+        },
+        "position": "bottom",
+        "padding": "large",
+        "margin": "none",
+        "transparency": "10",
+        "fontsize": "large",
+        "content": {
+            "message": "W celu świadczenia usług na najwyższym poziomie stosujemy pliki cookies. W każdej chwili mogą Państwo dokonać zmiany ustawień przeglądarki internetowej i wyłączyć opcję zapisu plików cookies. Szcegółowe informacje dotyczące plików cookies znajdują się pod linkiem: ",
+            "button": "Akceptuję",
+            "link": "https://wszystkoociasteczkach.pl/po-co-sa-ciasteczka"
+        }
+    })
+});</script>
+</body>
+</html>

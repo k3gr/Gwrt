@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Zgloś incydent | Liga FDS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/6b105a924a.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/styles/forms.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="background-league-img"><img src="/images/monza.png" alt="" srcset=""></div>
+    <nav class="navbar">
+        <div class="burger" id="burger">
+            <i class="fas fa-bars show" id="fas fa-bars"></i>
+            <i class="fas fa-times" id="fas fa-times"></i>
+        </div>
+        <div class="nav-left">
+            <a href="/liga" class="logo">
+                <img alt="logo ligi fsd" src="/images/logo_fsd.png">
+            </a>
+            <a href="/liga" class="logo-fsd">
+                Liga Fast Drive School
+            </a>
+        </div>
+        <div class="categories">
+            <ul>
+                <li class="main-li"><a href="/liga">Strona Główna</a></li>
+                <li><a href="/liga/kontakt">Kontakt</a></li>
+                <div class="socials-mob">
+                    <a href="https://facebook.com"><i
+                            class="fa-brands fa-facebook-f"></i></i></a>
+                    <a href="https://twitch.com"><i
+                            class="fa-brands fa-twitch"></i></i></a>
+                    <a href="https://discord.com/channels/730309320876752996/730313785335873637"><i
+                            class="fa-brands fa-discord"></i></a>
+                    <a href="https://youtube.com"><i
+                            class="fa-brands fa-youtube"></i></i></a>
+                </div>
+            </ul>
+        </div>
+        <div
+                th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+            <span th:case="${false}"><a href="/logowanie" class="login-button">Zaloguj</a></span>
+            <div th:case="${true}">
+                <div class="dropdown" id="user-name">
+                    <span class="login-button-name" sec:authentication="name">Jan</span>
+                    <span><i class="fa-solid fa-angle-down"></i></span></div>
+                <div>
+                    <ul class="dropdown-ul">
+                        <li><a href="/zglos-incydent">Zgłoś incydent</a></li>
+                        <li><a href="/logout">Wyloguj</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="login-panel">
+        <h1>Zgłoś incydent</h1>
+        <div th:if="${message != null}">
+            <p class="alert-info">[[${message}]]</p>
+        </div>
+        <div th:if="${error != null}">
+            <p class="errormsg">[[${error}]]</p>
+        </div>
+        <form th:action="@{/zglos-incydent}" method="post" enctype="multipart/form-data">
+            <div class="user-form" style="margin-bottom: 30px"><label class="label" style="margin-bottom: 150px" for="round">Wybierz
+                rundę.<span> *</span></label></div>
+            <div class="user-form">
+                <select style="height: 30px; border: #004e69 solid 2px" id="series" name="series" required>
+                    <option>Porsche Cup</option>
+                    <option>GT4 Sprint Series</option>
+                </select>
+            </div>
+            <div class="user-form">
+                <select style="height: 30px; border: #004e69 solid 2px" id="round" name="round" required>
+                    <option>24.04 – Suzuka International Racing Course</option>
+                    <option>01.05 – Autodromo Nazionale Monza</option>
+                    <option>15.05 – Cicuit de Spa-Francorchamps</option>
+                    <option>22.05 – Cicuit Park Zandvoort</option>
+                    <option>29.05 - Hungaroring</option>
+                    <option>12.06 - Watkins Glen International</option>
+                </select>
+            </div>
+            <div class="user-form">
+                <label for="reported">Podaj sprawcę<span> *</span></label>
+                <input type="text" id="reported" name="reported" required placeholder="Podaj sprawcę *">
+            </div>
+            <div class="user-form">
+                <textarea placeholder="Krótki opis zdarzenia." th:rows="3" id="description" name="description"
+                          required></textarea>
+            </div>
+            <div class="file-form">
+                <span>Załącz powtórkę(max 10MB)</span><span> *</span>
+                <input type="file" id="clip" name="clip" required>
+            </div>
+            <div class="user-form">
+                <div class="row">
+                    <div style="margin: 0" class="user-form-button">
+                        <button type="submit">Wyślij</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div th:replace="fragments :: sponsors"></div>
+<footer th:replace="fragments :: footer"></footer>
+<script src="js/show-button.js"></script>
+<script src="js/burger.js"></script>
+<script>window.addEventListener("scroll", function () {
+    var navbar = document.querySelector(".navbar");
+    var logo = document.querySelector(".logo");
+    navbar.classList.toggle("sticky", window.scrollY > 100);
+    logo.classList.toggle("sticky", window.scrollY > 100);
+})</script>
+</body>
+</html><!DOCTYPE html>

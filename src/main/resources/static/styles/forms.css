@@ -1,0 +1,499 @@
+.user-form, .file-form, .user-form-red {
+    position: relative;
+    justify-content: center;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.user-form label, .user-form-red label {
+    position: absolute;
+    top: 33%;
+    left: 17%;
+    margin: 0;
+    padding: 0 10px;
+    transition: top .2s ease-in-out, background-color .2s ease-in-out;
+    display: none;
+}
+
+label.label{
+    display: block;
+}
+label.label span, .user-form-red label span {
+    display: none;
+}
+label.label span{
+    display: inline;
+}
+
+.file-form label {
+    position: absolute;
+    top: 33%;
+    left: 17%;
+    margin: 0;
+    padding: 0 10px;
+    transition: top .2s ease-in-out, background-color .2s ease-in-out;
+}
+
+.file-form span:nth-child(2) {
+    color: #004e69;
+}
+
+.user-form input, .user-form-red input {
+    width: 60%;
+    padding: 12px 20px;
+    background-color: transparent;
+    border-bottom: 2px solid #015c7c;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+}
+
+.user-form-red input {
+    border-bottom: 2px solid #8a0000;
+}
+
+.file-form input {
+    padding: 12px 20px;
+    background-color: transparent;
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+}
+
+.user-form textarea {
+    width: 60%;
+    background-color: black;
+}
+
+.user-form-red textarea {
+    width: 60%;
+    background-color: black;
+}
+
+.user-form label.active, .user-form-red label.active {
+    top: -2px;
+    color: #a8a8a8;
+    display: block;
+    left:15%;
+    font-size: 14px;
+}
+
+.user-form label.active span, .user-form-red label.active span {
+    display: inline;
+}
+
+input:focus::placeholder{
+    color: transparent;
+}
+
+.user-form input:focus, .user-form-red input:focus {
+    outline: none !important;
+    border-radius: 45px;
+    background-color: #015c7c;
+}
+
+.user-form-red input:focus {
+    background-color: #8a0000;
+}
+
+.user-form > * {
+    font-size: 16px;
+    margin: 8px;
+}
+
+.user-form-red > * {
+    font-size: 16px;
+    margin: 8px;
+}
+
+.user-form-button, .user-form-button-red {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.user-form-button button, .user-form-button-red button {
+    padding: 10px;
+    color: #d2cfcf;
+    background-color: transparent;
+    border: 2px solid #015c7c;
+    width: 160px;
+    font-size: 20px;
+}
+
+.user-form-button-red button {
+    border: 2px solid #8a0000;
+}
+
+.user-form input:hover,
+.user-form-button button:hover,
+.user-form-red input:hover,
+.user-form-button-red button:hover {
+    transition-duration: 0.3s;
+    color: black;
+    background-color: #015c7c;
+    border-radius: 45px;
+}
+
+.user-form-red input:hover,
+.user-form-button-red button:hover {
+    background-color: #8a0000;
+
+}
+
+.login-panel, .reg-panel, .verify-panel {
+    width: 600px;
+    position: absolute;
+    top: 20vh;
+    left: 50%;
+    transform: translate(-50%, 0);
+    padding-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px auto;
+    border-radius: 15px;
+    min-height: 450px;
+}
+
+.reg-panel {
+    top: 17vh;
+    max-width: 1000px;
+    width: 800px;
+}
+
+.rep-panel-half {
+    display: inline-block;
+    width: 49%;
+}
+
+.verify-panel {
+    top: 15vh;
+}
+
+.verify-panel h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+.login-panel h1, .reg-panel h1 {
+    margin-top: 30px;
+    color: #e3e3e3;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.login-panel p, .reg-panel p, .verify-panel p {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.verify-panel p {
+    margin-bottom: 5px;
+}
+
+.verify-panel p {
+    font-size: 22px;
+    margin-top: 8px;
+}
+
+.alert-info {
+    margin-top: 20px;
+    color: green;
+    font-size: 18px;
+    text-align: center;
+}
+
+.alert-info-error {
+    margin-top: 20px;
+    color: #bd0000;
+    font-size: 18px;
+    text-align: center;
+}
+
+.user-form span {
+    color: #015c7c;
+}
+
+.user-form-button button {
+    margin-bottom: 20px;
+}
+
+.user-form-red span {
+    color: #8a0000;
+}
+
+.user-form-red-button button {
+    margin-bottom: 20px;
+}
+
+.fa-circle-xmark {
+    color: #8a0000;
+    font-size: 110px;
+}
+
+.fa-circle-check {
+    color: #00733b;
+    font-size: 110px;
+}
+
+.verify-login-button {
+    margin: 0 auto;
+    background-color: transparent;
+    color: #e3e3e3;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 9px 6px 9px 6px;
+    /*line-height: 40px;*/
+    font-weight: 400;
+    letter-spacing: 1px;
+    border-style: solid;
+    border-color: #015c7c;
+    width: 300px;
+}
+
+@media (orientation: portrait) and (min-width: 330px) {
+    .login-panel, .reg-panel, .verify-panel {
+        margin: 0;
+        position: static;
+        transform: translate(0, 0);
+        border-radius: 0;
+        width: 100%;
+        max-width: 100%;
+        min-height: 200px;
+    }
+
+    .verify-panel {
+        padding-top: 15px;
+    }
+
+    .login-panel button {
+        margin: 20px 0 0 0;
+    }
+
+    .login-panel span {
+        display: block;
+    }
+
+    .login-panel h1, .reg-panel h1 {
+        font-size: 30px;
+        margin: 20px 0 10px 0;
+    }
+
+    .user-form input {
+        max-width: 400px;
+    }
+
+    .user-form span {
+        display: inline-block;
+        margin-left: 3px;
+    }
+
+    .user-form-red input {
+        max-width: 400px;
+    }
+
+    .user-form-red span {
+        display: inline-block;
+        margin-left: 3px;
+    }
+
+    .rep-panel-half {
+        display: block;
+        width: 100%;
+    }
+}
+
+@media (orientation: landscape) and (min-width: 700px) and (max-width: 1360px) {
+    .login-panel, .reg-panel, .verify-panel {
+        margin: 0 auto;
+        position: static;
+        transform: translate(0, 0);
+        border-radius: 0;
+        width: 800px;
+        max-width: 100%;
+        min-height: 200px;
+    }
+
+    .verify-panel {
+        padding-top: 15px;
+    }
+
+    .login-panel button {
+        margin: 20px 0 0 0;
+    }
+
+    .login-panel span {
+        display: block;
+    }
+
+    .login-panel h1, .reg-panel h1 {
+        font-size: 30px;
+        margin: 20px 0 10px 0;
+    }
+
+    .user-form input {
+        max-width: 400px;
+    }
+
+    .user-form span {
+        display: inline-block;
+        margin-left: 3px;
+    }
+    .user-form-red input {
+        max-width: 400px;
+    }
+
+    .user-form-red span {
+        display: inline-block;
+        margin-left: 3px;
+    }
+    .rep-panel-half {
+        display: block;
+        width: 100%;
+    }
+
+    .user-form label {
+        left: 25%;
+    }
+
+    .user-form label.active {
+        top: -2px;
+        color: #a8a8a8;
+        /*background-color: rgba(0, 0, 0, 0.53);*/
+        border-radius: 45px;
+    }
+    .user-form-red label {
+        left: 25%;
+    }
+
+    .user-form-red label.active {
+        top: -2px;
+        color: #a8a8a8;
+        /*background-color: rgba(0, 0, 0, 0.53);*/
+        border-radius: 45px;
+    }
+}
+
+@media (orientation: landscape) and (min-width: 1266px) and (max-width: 1367px) {
+    .reg-panel, .login-panel {
+        top: 17vh;
+        max-width: 1000px;
+        width: 600px;
+        padding-bottom: 0;
+        display: flex;
+        margin: 0 auto;
+        border-radius: 15px;
+        min-height: 400px;
+    }
+    .user-form label, .user-form-red label {
+        left: 19%;
+    }
+    .verify-panel {
+        min-height: 350px;
+    }
+
+    .reg-panel h1 {
+        margin: 0;
+    }
+
+    .user-form-button button {
+        margin: 16px 0;
+    }
+    .user-form-red-button button {
+        margin: 16px 0;
+    }
+
+    .reg-panel p {
+        margin: 8px 0 0 0;
+    }
+
+    .user-form-button {
+        margin-top: 5px;
+        display: flex;
+        justify-content: center;
+    }
+    .user-form-red-button {
+        margin-top: 5px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .reg-panel button {
+        padding: 3px 0;
+    }
+
+    .user-form input {
+        width: 60%;
+        padding: 6px 10px;
+        background-color: transparent;
+        border-bottom: 2px solid #015c7c;
+        border-top: 0;
+        border-right: 0;
+        border-left: 0;
+    }
+    .user-form-red input {
+        width: 60%;
+        padding: 6px 10px;
+        background-color: transparent;
+        border-bottom: 2px solid #8a0000;
+        border-top: 0;
+        border-right: 0;
+        border-left: 0;
+    }
+}
+
+@media (orientation: portrait) and (min-width: 300px) {
+    .login-panel, .reg-panel, .verify-panel {
+        margin: 0;
+        position: static;
+        transform: translate(0, 0);
+        border-radius: 0;
+        width: 100%;
+        max-width: 100%;
+        min-height: 200px;
+    }
+
+    .verify-panel {
+        padding-top: 15px;
+    }
+
+    .login-panel button {
+        margin: 20px 0 0 0;
+    }
+
+    .login-panel span {
+        display: block;
+    }
+
+    .login-panel h1, .reg-panel h1 {
+        font-size: 30px;
+        margin: 20px 0 10px 0;
+    }
+
+    .user-form input {
+        max-width: 400px;
+    }
+
+    .user-form span {
+        display: inline-block;
+        margin-left: 3px;
+    }
+
+    .user-form-red input {
+        max-width: 400px;
+    }
+
+    .user-form-red span {
+        display: inline-block;
+        margin-left: 3px;
+    }
+
+    .rep-panel-half {
+        display: block;
+        width: 100%;
+    }
+}

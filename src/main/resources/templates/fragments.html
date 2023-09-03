@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Liga iRacing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/6b105a924a.js" crossorigin="anonymous"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/styles/forms.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+<body>
+<div th:fragment="dropdown" class="dropdown" id="user-name">
+    <span class="login-button-name" sec:authentication="name">Jan</span>
+    <span><i class="fa-solid fa-angle-down"></i></span>
+    <div class="dropdown-background">
+        <ul class="dropdown-ul">
+            <li><a href="/logout">Ustawienia</a></li>
+            <li><a href="/logout">Profil</a></li>
+            <li><a href="/logout">Wyloguj</a></li>
+        </ul>
+    </div>
+</div>
+<nav th:fragment="nav" class="navbar">
+    <div class="burger" id="burger">
+        <i class="fas fa-bars show" id="fas fa-bars"></i>
+        <i class="fas fa-times" id="fas fa-times"></i>
+    </div>
+    <div class="nav-left">
+        <a href="/liga" class="logo">
+            <img src="/images/logo_fsd.png">
+        </a>
+        <a href="/liga" class="logo-fsd">
+            Liga Fast Drive School
+        </a>
+    </div>
+    <div class="categories">
+        <ul>
+            <li><a href="#">Strona Główna</a></li>
+            <li><a href="#">Kalendarz</a></li>
+            <li><a href="#">Regulamin</a></li>
+            <li><a href="#">Zawodnicy</a></li>
+            <li><a href="#">Sponsorzy</a></li>
+            <li><a href="#">Kontakt</a></li>
+            <div class="socials-mob">
+                <a href="https://facebook.com"><i
+                        class="fa-brands fa-facebook-f"></i></i></a>
+                <a href="https://twitch.com"><i
+                        class="fa-brands fa-twitch"></i></i></a>
+                <a href="https://discord.com/channels/730309320876752996/730313785335873637"><i
+                        class="fa-brands fa-discord"></i></a>
+                <a href="https://youtube.com"><i
+                        class="fa-brands fa-youtube"></i></i></a>
+            </div>
+        </ul>
+    </div>
+    <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+        <span th:case="${false}"><a href="/logowanie" class="login-button">Zaloguj</a></span>
+        <span th:case="${true}">
+        <div class="dropdown" id="user-name">
+            <span class="login-button-name" sec:authentication="name">Jan</span>
+            <span><i class="fa-solid fa-angle-down"></i></span>
+            <div class="dropdown-background">
+                <ul class="dropdown-ul">
+                    <li><a href="/logout">Ustawienia</a></li>
+                    <li><a href="/logout">Profil</a></li>
+                    <li><a href="/logout">Wyloguj</a></li>
+                </ul>
+            </div>
+        </div>
+            </span>
+    </div>
+</nav>
+<div th:fragment="socials-mob" class="socials-mob">
+    <a th:href="@{https://www.facebook.com/GWR-Team-102359631569909}"><i
+            class="fa-brands fa-facebook-f"></i></a>
+    <a th:href="@{https://www.twitch.tv/jarek_irek}"><i
+            class="fa-brands fa-twitch"></i></a>
+    <a th:href="@{https://discord.com/channels/730309320876752996/730313785335873637}"><i
+            class="fa-brands fa-discord"></i></a>
+    <a th:href="@{https://www.youtube.com/channel/UCO8uG-29oV1FE9rXSKtsOsA}"><i
+            class="fa-brands fa-youtube"></i></a>
+</div>
+<div th:fragment="sponsors" class="sponsors">
+    <a href="http://volveno.com"><img src="/images/volveno.png" alt="Volveno"></a>
+    <a href="https://podjaskolka.pl/"><img src="/images/hotel.png" alt="Hotel pod Jaskółką"></a>
+    <a href="http://farby-przemyslowe.com/"><img src="/images/baltic.png" alt="Baltic Polska"></a>
+    <a href="http://obrobka-metalu.com/"><img src="/images/obrobka-metalu.png" alt="Obróbka Metalu"></a>
+    <a href="https://instagram.com/hfbrdesign/"><img src="/images/hfbr.png" alt="HFBRdesign by Adrian Hofbauer"></a>
+    <a href="https://instagram.com/gepettomods/"><img src="/images/gepetto.png" alt="Gepetto Mods"></a>
+</div>
+<footer th:fragment="footer">
+    <div class="footer-box">
+        <div class="socials">
+            <div class="social"><a th:href="@{https://www.facebook.com/GWR-Team-102359631569909}"><i
+                    class="fa-brands fa-facebook-f"></i></a></div>
+            <div class="social"><a th:href="@{https://www.twitch.tv/jarek_irek}"><i
+                    class="fa-brands fa-twitch"></i></a></div>
+            <div class="social"><a th:href="@{https://discord.com/channels/730309320876752996/730313785335873637}"><i
+                    class="fa-brands fa-discord"></i></a></div>
+            <div class="social"><a th:href="@{https://www.youtube.com/channel/UCO8uG-29oV1FE9rXSKtsOsA}"><i
+                    class="fa-brands fa-youtube"></i></a></div>
+        </div>
+        <div class="footer-nav">
+            <a href="/polityka-prywatnosci"><span>Polityka prywatności</span></a>
+            <a href="/glowny-regulamin"><span>Regulamin ligi</span></a>
+        </div>
+        <div class="footer-name"><span>© Liga Fast Drive School 2022</span><span class="sep"> | </span>
+            <p class="project" >Projekt i realizacja </p>
+            <span class="project-ref"><a href="https://github.com/k3gr">k3gr</a></span>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

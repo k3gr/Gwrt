@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Zawodnicy | GT4 Sprint Series | Liga FDS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/6b105a924a.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/styles/forms.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="arrow"><i class="fa-solid fa-arrow-up"></i></div>
+    <nav class="navbar">
+        <div class="burger" id="burger">
+            <i class="fas fa-bars show" id="fas fa-bars"></i>
+            <i class="fas fa-times" id="fas fa-times"></i>
+        </div>
+        <div class="nav-left">
+            <a href="/liga" class="logo">
+                <img alt="logo ligi fsd" src="/images/logo_fsd.png">
+            </a>
+            <a href="/liga" class="logo-fsd">
+                Liga Fast Drive School
+            </a>
+        </div>
+        <div class="categories">
+            <ul>
+                <li class="main-li"><a href="/liga">Strona Główna</a></li>
+                <li><a href="/gt4sprintseries/regulamin">Regulamin</a></li>
+                <li><a href="/gt4sprintseries/zawodnicy">Zawodnicy</a></li>
+                <div class="socials-mob">
+                    <a href="https://facebook.com"><i
+                            class="fa-brands fa-facebook-f"></i></i></a>
+                    <a href="https://twitch.com"><i
+                            class="fa-brands fa-twitch"></i></i></a>
+                    <a href="https://discord.com/channels/730309320876752996/730313785335873637"><i
+                            class="fa-brands fa-discord"></i></a>
+                    <a href="https://youtube.com"><i
+                            class="fa-brands fa-youtube"></i></i></a>
+                </div>
+            </ul>
+        </div>
+        <div
+                th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+            <span th:case="${false}"><a href="/logowanie" class="login-button">Zaloguj</a></span>
+            <div th:case="${true}">
+                <div class="dropdown" id="user-name">
+                    <span class="login-button-name" sec:authentication="name">Jan</span>
+                    <span><i class="fa-solid fa-angle-down"></i></span></div>
+                <div>
+                    <ul class="dropdown-ul">
+                        <li><a href="/zglos-incydent">Zgłoś incydent</a></li>
+                        <li><a href="/logout">Wyloguj</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="players">
+        <div th:if="${users.size()>0}" class="players-league-name">
+            <span>Zawodnicy</span><span class="players-league-name-hide"> | GT4 Sprint Series</span><br>
+            <div class="noplayers"><span>Zapisanych zawodników: </span>
+                <span th:text="${users.size()}"></span>
+            </div>
+        </div>
+        <div class="player" th:each="user: ${users}">
+            <span class="player-box"
+                  th:text="${user.getFirstName() + ' ' + user.getLastName()}">Przykładowe zdjęcie</span>
+            <span class="player-box" th:text="${user.getCar()}">Przykładowe zdjęcie</span>
+            <span class="player-box" th:text="${user.getTeam()}">Przykładowe zdjęcie</span>
+        </div>
+        <div th:if="${users.isEmpty()}" class="players-league-name-empty">
+            <span>Brak zapisanych zawodników.</span>
+        </div>
+    </div>
+    <div th:replace="fragments :: sponsors"></div>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+<script src="/js/show-button.js"></script>
+<script src="/js/burger.js"></script>
+<script>window.addEventListener("scroll", function () {
+    var navbar = document.querySelector(".navbar");
+    var logo = document.querySelector(".logo");
+    var arrow = document.querySelector("#arrow");
+    navbar.classList.toggle("sticky", window.scrollY > 100);
+    logo.classList.toggle("sticky", window.scrollY > 100);
+    arrow.classList.toggle("sticky", window.scrollY > 100);
+})</script>
+<script>var arrowup = document.querySelector("#arrow");
+arrowup.addEventListener("click", function () {
+    $("html, body").animate({scrollTop: 0}, "slow");
+})
+</script>
+</body>
+</html><!DOCTYPE html>

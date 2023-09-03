@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liga iRacing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/styles/user.css">
+</head>
+<body>
+<div class="container">
+    <div class="background-league">
+        <nav class="navbar">
+            <div class="nav-left">
+                <a href="#" class="logo">
+                    <img th:src="|/images/logo_fsd.png|">
+                </a>
+                <a href="#" class="logo">
+                    Liga Fast Drive School
+                </a>
+            </div>
+            <div class="categories">
+                <ul>
+                    <li><a href="#">Strona Główna</a></li>
+                    <li><a href="#">Regulamin</a></li>
+                    <li><a href="#">Zawodnicy</a></li>
+                    <li><a href="#">Sponsorzy</a></li>
+                    <li><a href="#">Kontakt</a></li>
+                </ul>
+            </div>
+            <div>
+                <a href="/login" class="login-button">Zaloguj się</a>
+                <a href="/signup" class="login-button">Zapisz się</a>
+            </div>
+        </nav>
+        <div class="user-profile">
+            <div class="user-details">
+                <div class="user-photo">
+                    <img src="https://img.redbull.com/images/c_crop,x_1341,y_0,h_3525,w_2644/c_fill,w_860,h_1229/q_auto,f_auto/redbullcom/2021/7/7/hhhsstzmihmm1wwuup5a/max-verstappen"
+                         alt="" srcset="">
+                </div>
+                <div class="user-about">
+                    <p th:text="${user.getUsername()}">Jan Kowalski</p>
+                    <p th:text="${user.getUsername()}">Jan Kowalski</p>
+                    <p>Audi R8 GT3</p>
+                    <p>Polska</p>
+                </div>
+                <table>
+                    <tr class="first-row">
+                        <th style="width: 25px; text-align: center; border-left: 0px;">Pos</th>
+                        <th>Member Name</th>
+                        <th style="width: 20px; text-align: center; border-left: 0px;"></th>
+                        <th style="width: 15px; text-align: center;">Wins</th>
+                        <th style="width: 56px; text-align: center;">Avg Start</th>
+                        <th style="width: 56px; text-align: center;">Avg Finish</th>
+                        <th style="width: 25px; text-align: center;"><img
+                                src="https://ir-core-sites.iracing.com/members/member_images/ui/icons/points-subtracted.png">
+                        </th>
+                        <th style="width: 25px; text-align: center;"><img
+                                src="https://ir-core-sites.iracing.com/members/member_images/ui/icons/points-added.png">
+                        </th>
+                        <th style="width: 25px; text-align: center;"><img
+                                src="https://ir-core-sites.iracing.com/members/member_images/ui/icons/point-system.png">
+                        </th>
+                    </tr>
+                    <tr id="series-first-place">
+                        <td style="text-align: center; border-left: 0px;">1</td>
+                        <td style="font-weight: bold;">Marcin Gadzinski</td>
+                        <td style="border-left: 0px;"><img
+                                src="https://ir-core-sites.iracing.com/members/member_images/ui/icons/first-place.png">
+                        </td>
+                        <td style="text-align: center;">4</td>
+                        <td style="text-align: center;">3</td>
+                        <td style="text-align: center;">2</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">2</td>
+                        <td><a href="javascript:void(0);"><b>278</b></a></td>
+                    </tr>
+                    <tr id="series-second-place">
+                        <td style="text-align: center; border-left: 0px;">2</td>
+                        <td style="font-weight: bold;">Krystian Peczek</td>
+                        <td style="border-left: 0px;"><img
+                                src="https://ir-core-sites.iracing.com/members/member_images/ui/icons/second-place.png">
+                        </td>
+                        <td style="text-align: center;">1</td>
+                        <td style="text-align: center;">3</td>
+                        <td style="text-align: center;">7</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">2</td>
+                        <td><a href="javascript:void(0);"><b>213</b></a></td>
+                    </tr>
+                    <tr id="series-third-place">
+                        <td style="text-align: center; border-left: 0px;">3</td>
+                        <td style="font-weight: bold;">Albert Soloduszkiewicz</td>
+                        <td style="border-left: 0px;"><img
+                                src="https://ir-core-sites.iracing.com/members/member_images/ui/icons/third-place.png">
+                        </td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">12</td>
+                        <td style="text-align: center;">10</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>161</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">4</td>
+                        <td style="font-weight: bold;">Blazej Podemski</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">9</td>
+                        <td style="text-align: center;">11</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>159</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">5</td>
+                        <td style="font-weight: bold;">Maciej Bialecki</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">15</td>
+                        <td style="text-align: center;">8</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>152</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">6</td>
+                        <td style="font-weight: bold;">Kamil Timber</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">16</td>
+                        <td style="text-align: center;">11</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>144</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">7</td>
+                        <td style="font-weight: bold;">Kamil Grzesik</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">8</td>
+                        <td style="text-align: center;">13</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">4</td>
+                        <td><a href="javascript:void(0);"><b>142</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">8</td>
+                        <td style="font-weight: bold;">Andrzej Śliwiński</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">8</td>
+                        <td style="text-align: center;">13</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>141</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">9</td>
+                        <td style="font-weight: bold;">Filip Domagalski</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">1</td>
+                        <td style="text-align: center;">2</td>
+                        <td style="text-align: center;">2</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">2</td>
+                        <td><a href="javascript:void(0);"><b>140</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">10</td>
+                        <td style="font-weight: bold;">Jakub Bugaj</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">14</td>
+                        <td style="text-align: center;">11</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>121</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">11</td>
+                        <td style="font-weight: bold;">Pawel Kulej</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">16</td>
+                        <td style="text-align: center;">14</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>119</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">12</td>
+                        <td style="font-weight: bold;">Mateusz Majster</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">15</td>
+                        <td style="text-align: center;">12</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>111</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">13</td>
+                        <td style="font-weight: bold;">Tomasz Oliwiak</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">12</td>
+                        <td style="text-align: center;">15</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>109</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">14</td>
+                        <td style="font-weight: bold;">Luke Sawicki</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">7</td>
+                        <td style="text-align: center;">10</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>105</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">15</td>
+                        <td style="font-weight: bold;">Jerzy Flik</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">11</td>
+                        <td style="text-align: center;">17</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>89</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">16</td>
+                        <td style="font-weight: bold;">Jakub Krasowiakk</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">15</td>
+                        <td style="text-align: center;">14</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>83</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">17</td>
+                        <td style="font-weight: bold;">Jaroslaw Tymicki</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">17</td>
+                        <td style="text-align: center;">16</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>82</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">18</td>
+                        <td style="font-weight: bold;">Rafal Markiewicz</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">20</td>
+                        <td style="text-align: center;">14</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>80</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">19</td>
+                        <td style="font-weight: bold;">Piotr Margula</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">27</td>
+                        <td style="text-align: center;">19</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>78</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">20</td>
+                        <td style="font-weight: bold;">Rafal Fill</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">21</td>
+                        <td style="text-align: center;">14</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>76</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">21</td>
+                        <td style="font-weight: bold;">Adam Starzyński</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">7</td>
+                        <td style="text-align: center;">6</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>70</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">22</td>
+                        <td style="font-weight: bold;">Niko Wierzbicki</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">25</td>
+                        <td style="text-align: center;">14</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">2</td>
+                        <td><a href="javascript:void(0);"><b>68</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">23</td>
+                        <td style="font-weight: bold;">Paul Okreglicki</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">8</td>
+                        <td style="text-align: center;">19</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>64</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">24</td>
+                        <td style="font-weight: bold;">Dawid Jastrzębski</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">24</td>
+                        <td style="text-align: center;">19</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>60</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">25</td>
+                        <td style="font-weight: bold;">Dominik Flak</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">23</td>
+                        <td style="text-align: center;">21</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>52</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">26</td>
+                        <td style="font-weight: bold;">Dariusz Garbarz</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">11</td>
+                        <td style="text-align: center;">22</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>51</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">27</td>
+                        <td style="font-weight: bold;">Filip Jurszewicz</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">19</td>
+                        <td style="text-align: center;">17</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>48</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">28</td>
+                        <td style="font-weight: bold;">Adrian Czarnecki</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">23</td>
+                        <td style="text-align: center;">21</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>44</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">29</td>
+                        <td style="font-weight: bold;">Krzysztof Badura</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">9</td>
+                        <td style="text-align: center;">17</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>39</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">30</td>
+                        <td style="font-weight: bold;">Alan Orzechowski</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">18</td>
+                        <td style="text-align: center;">14</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>38</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">30</td>
+                        <td style="font-weight: bold;">Bartlomiej Gad</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">25</td>
+                        <td style="text-align: center;">18</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>38</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">32</td>
+                        <td style="font-weight: bold;">Bartosz Lech</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">16</td>
+                        <td style="text-align: center;">18</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>32</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">33</td>
+                        <td style="font-weight: bold;">Maciej Wroblewski</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">24</td>
+                        <td style="text-align: center;">21</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>29</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">34</td>
+                        <td style="font-weight: bold;">Kris Kwiatkowski</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">25</td>
+                        <td style="text-align: center;">22</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>21</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">35</td>
+                        <td style="font-weight: bold;">Adrian Siodlarz</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">29</td>
+                        <td style="text-align: center;">26</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>19</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">36</td>
+                        <td style="font-weight: bold;">Michał Babczyk</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">30</td>
+                        <td style="text-align: center;">26</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>16</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">37</td>
+                        <td style="font-weight: bold;">David Smetek</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">22</td>
+                        <td style="text-align: center;">25</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>12</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">38</td>
+                        <td style="font-weight: bold;">Krzysztof Hinc2</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">19</td>
+                        <td style="text-align: center;">23</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>8</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">39</td>
+                        <td style="font-weight: bold;">Robert Kurek2</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">28</td>
+                        <td style="text-align: center;">24</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>7</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">40</td>
+                        <td style="font-weight: bold;">Mateusz Zbroszczyk</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">26</td>
+                        <td style="text-align: center;">26</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>5</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">41</td>
+                        <td style="font-weight: bold;">Wojciech Kurdelski</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">30</td>
+                        <td style="text-align: center;">29</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>2</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">42</td>
+                        <td style="font-weight: bold;">Lukasz Pawloski</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">9</td>
+                        <td style="text-align: center;">15</td>
+                        <td style="text-align: center;">-59</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>0</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">42</td>
+                        <td style="font-weight: bold;">Maciej Kaczmarek2</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">23</td>
+                        <td style="text-align: center;">23</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>0</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">42</td>
+                        <td style="font-weight: bold;">Grzegorz Kuna2</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">25</td>
+                        <td style="text-align: center;">31</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>0</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">42</td>
+                        <td style="font-weight: bold;">Jacek Hadamik</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">18</td>
+                        <td style="text-align: center;">32</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>0</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">42</td>
+                        <td style="font-weight: bold;">Pawel Szymanek</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">12</td>
+                        <td style="text-align: center;">33</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>0</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">42</td>
+                        <td style="font-weight: bold;">Jakub Nowak</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">6</td>
+                        <td style="text-align: center;">34</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>0</b></a></td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; border-left: 0px;">42</td>
+                        <td style="font-weight: bold;">Miroslaw Nastalczyk</td>
+                        <td style="border-left: 0px;"></td>
+                        <td style="text-align: center;">0</td>
+                        <td style="text-align: center;">28</td>
+                        <td style="text-align: center;">34</td>
+                        <td style="text-align: center;">-</td>
+                        <td style="text-align: center;">-</td>
+                        <td><a href="javascript:void(0);"><b>0</b></a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="sponsors">
+        <img src="/images/volveno.png" alt="Volveno">
+        <img src="/images/hotel.png" alt="Hotel pod Jaskółką">
+        <img src="/images/baltic.png" alt="Baltic Polska">
+        <img src="/images/obrobka-metalu.png" alt="Obróbka Metalu">
+        <img src="/images/gepetto.png" alt="Gepetto Mods">
+    </div>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+<script>window.addEventListener("scroll", function () {
+    var navbar = document.querySelector(".navbar");
+    var logo = document.querySelector(".logo");
+    navbar.classList.toggle("sticky", window.scrollY > 100);
+    logo.classList.toggle("sticky", window.scrollY > 100);
+})</script>
+</body>
+</html><!DOCTYPE html>

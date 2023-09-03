@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Porsche Cup Challenge | Liga FDS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/6b105a924a.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/styles/forms.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdn.websitepolicies.io/lib/cookieconsent/1.0.3/cookieconsent.min.js" defer></script>
+</head>
+<body>
+<div class="container">
+    <div class="background-league">
+        <div class="background-league-img"><img src="/images/background2.png" alt="" srcset=""></div>
+        <div id="arrow"><i class="fa-solid fa-arrow-up"></i></div>
+        <nav class="navbar">
+            <div class="burger" id="burger">
+                <i class="fas fa-bars show" id="fas fa-bars"></i>
+                <i class="fas fa-times" id="fas fa-times"></i>
+            </div>
+            <div class="nav-left">
+                <a href="/liga" class="logo">
+                    <img alt="logo ligi fsd" src="/images/logo_fsd.png">
+                </a>
+                <a href="/liga" class="logo-fsd">
+                    Liga Fast Drive School
+                </a>
+            </div>
+            <div class="categories">
+                <ul>
+                    <li th:if="${#authentication}? ${#authorization.expression('isAuthenticated()')}"
+                        class="join-league"><a href="/porschecup/zapisz-sie">Zapisz się</a></li>
+                    <li th:unless="${#authentication}? ${#authorization.expression('isAuthenticated()')}"
+                        class="join-league"><a href="/logowanie">Zapisz się</a></li>
+                    <li class="main-li"><a href="/liga">Strona Główna</a></li>
+                    <li><a href="/porschecup/regulamin">Regulamin</a></li>
+                    <li><a href="/porschecup/zawodnicy">Zawodnicy</a></li>
+                </ul>
+                <div class="socials-mob">
+                    <a href="https://facebook.com"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://twitch.com"><i
+                            class="fa-brands fa-twitch"></i></a>
+                    <a href="https://discord.com/channels/730309320876752996/730313785335873637"><i
+                            class="fa-brands fa-discord"></i></a>
+                    <a href="https://youtube.com"><i
+                            class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+            <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+                <span th:case="${false}"><a href="/logowanie" class="login-button">Zaloguj</a></span>
+                <div th:case="${true}">
+                    <div class="dropdown" id="user-name">
+                        <span class="login-button-name" sec:authentication="name">Jan</span>
+                        <span><i class="fa-solid fa-angle-down"></i></span></div>
+                    <div>
+                        <ul class="dropdown-ul">
+                            <li><a href="/zglos-incydent">Zgłoś incydent</a></li>
+                            <li><a href="/logout">Wyloguj</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="next-race-container-league">
+            <div class="league-title"><h2>Porsche Cup Challenge</h2></div>
+            <div class="next-race">
+                <h1>Następny wyścig:</h1>
+                <h2 id="trackname" class="next-race-event-name">
+                </h2>
+                <div id="countdown" class="countdown">
+                    <div class="time">
+                        <h2 id="days"></h2>
+                        <p>Dni</p>
+                    </div>
+                    <div class="time">
+                        <h2 id="hours"></h2>
+                        <p>Godzin</p>
+                    </div>
+                    <div class="time">
+                        <h2 id="minutes"></h2>
+                        <p>Minut</p>
+                    </div>
+                    <div class="time">
+                        <h2 id="seconds"></h2>
+                        <p>Sekund</p>
+                    </div>
+                </div>
+                <p id="racedate" class="next-race-date"></p>
+            </div>
+            <div class="track-logo-league">
+                <img class="track-image" id="track-img" src="">
+                <p id="full-name"></p>
+                <p><span id="track-config"></span></p>
+            </div>
+        </div>
+        <div class="timeline-box">
+            <ul class="timeline">
+                <li id="1" data-year="24.04.2022" data-text="Suzuka"><p>1</p></li>
+                <li id="2" data-year="01.05.2022" data-text="Monza"><p>2</p></li>
+                <li id="3" data-year="15.05.2022" data-text="Spa"><p>3</p></li>
+                <li id="4" data-year="22.05.2022" data-text="Zandvoort"><p>4</p></li>
+                <li id="5" data-year="29.05.2022" data-text="Hungaroring"><p>5</p></li>
+                <li id="6" data-year="12.06.2022" data-text="Watkins Glen"><p>6</p></li>
+            </ul>
+        </div>
+    </div>
+    <div th:replace="fragments :: sponsors">
+    </div>
+    <div th:if="${porschelaststandings.size()>0}" class="scoreboardgt4">
+        <h2 class="results">Wyniki</h2>
+        <div class="scoreboard-result-nav">
+            <ul>
+                <li id="last-race" class="active">Ostatni wyścig</li>
+                <li id="main-scoreboard">Tabela ligowa</li>
+            </ul>
+        </div>
+        <div class="scoreboard-result">
+            <div class="leader-box">
+                <div class="leader">
+                    <h2>Lider tabeli</h2>
+                </div>
+                <div class="leader-div"><img src="https://raw.githubusercontent.com/k3gr/gwrt/main/images/cupleader.png" alt="Lider tabeli"></div>
+            </div>
+            <table class="scoreboard-table">
+                <thead id="last-head">
+                <tr>
+                    <th title="Field #1">#</th>
+                    <th title="Field #3">Kierowca</th>
+                    <th title="Field #2">Samochód</th>
+                    <th title="Field #4">Czas</th>
+                    <th title="Field #5">Punkty</th>
+                </tr>
+                </thead>
+                <tbody id="last-body">
+                <tr th:if="${porschelaststandings.isEmpty()}">
+                    <td colspan="2">Tabela niedstępna</td>
+                </tr>
+                <tr th:each="person : ${porschelaststandings}">
+                    <td><span th:text="${person.getId()}"> 1 </span></td>
+                    <td><span th:text="${person.getName()}"> Jan Janowski </span></td>
+                    <td><span th:text="${person.getCar()}"> Lambo </span></td>
+                    <td><span th:text="${person.getTime()}"> -00.000 </span></td>
+                    <td><span th:text="${person.getPoints()}"> 100 </span></td>
+                </tr>
+                </tbody>
+                <thead id="main-head" class="active">
+                <tr>
+                    <th title="Field #1">#</th>
+                    <th title="Field #2">Kierowca</th>
+                    <th title="Field #3">Wygrane</th>
+                    <th title="Field #4">Śr. Start</th>
+                    <th title="Field #5">Śr. Meta</th>
+                    <th title="Field #6">Punkty</th>
+                </tr>
+                </thead>
+                <tbody id="main-body" class="active">
+                <tr th:if="${porschestandings.isEmpty()}">
+                    <td colspan="2">Tabela niedstępna</td>
+                </tr>
+                <tr th:each="person : ${porschestandings}">
+                    <td><span th:text="${person.getId()}"> 1 </span></td>
+                    <td><span th:text="${person.getName()}"> Jan Janowski </span></td>
+                    <td><span th:text="${person.getWins()}"> 3 </span></td>
+                    <td><span th:text="${person.getAvgstart()}"> 2</span></td>
+                    <td><span th:text="${person.getAvgfin()}"> 2 </span></td>
+                    <td><span th:text="${person.getPoints()}"> 100 </span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+<script src="/js/countdown-porsche.js"></script>
+<script src="/js/show-button.js"></script>
+<script src="/js/burger.js"></script>
+<script>window.addEventListener("scroll", function () {
+    var navbar = document.querySelector(".navbar");
+    var logo = document.querySelector(".logo");
+    var arrow = document.querySelector("#arrow");
+    navbar.classList.toggle("sticky", window.scrollY > 100);
+    logo.classList.toggle("sticky", window.scrollY > 100);
+    arrow.classList.toggle("sticky", window.scrollY > 100);
+})</script>
+<script>var arrowup = document.querySelector("#arrow");
+arrowup.addEventListener("click", function (){
+    $("html, body").animate({scrollTop: 0}, "slow");
+})
+</script>
+</body>
+</html><!DOCTYPE html>

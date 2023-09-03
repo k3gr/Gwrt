@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Wystąpił błąd | Liga FDS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/6b105a924a.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/styles/forms.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="background-league-error"><img th:src="@{/images/error.png}" alt="Bathurst" srcset=""></div>
+    <nav class="navbar">
+        <div class="nav-left">
+            <a th:href="@{/liga}" class="logo">
+                <img alt="logo ligi fsd" src="/images/gwr_logo.png">
+            </a>
+        </div>
+    </nav>
+    <div><span class="error-page-span">Nie ma takiej strony.</span>
+    </div>
+    <div class="home-button-div"><a th:href="@{/liga}" class="home-button"><span></span>Wróć do strony głównej</a></div>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+<script src="js/burger.js"></script>
+<script src="js/show-button.js"></script>
+<script>window.addEventListener("scroll", function () {
+    var navbar = document.querySelector(".navbar");
+    var logo = document.querySelector(".logo");
+    navbar.classList.toggle("sticky", window.scrollY > 100);
+    logo.classList.toggle("sticky", window.scrollY > 100);
+})</script>
+</body>
+</html>

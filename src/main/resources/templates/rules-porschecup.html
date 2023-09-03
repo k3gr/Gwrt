@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Regulamin | Porsche Cup Challenge | Liga FDS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/6b105a924a.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/styles/forms.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+<body>
+<div class="container">
+    <div id="arrow"><i class="fa-solid fa-arrow-up"></i></div>
+    <nav class="navbar">
+        <div class="burger" id="burger">
+            <i class="fas fa-bars show" id="fas fa-bars"></i>
+            <i class="fas fa-times" id="fas fa-times"></i>
+        </div>
+        <div class="nav-left">
+            <a href="/liga" class="logo">
+                <img alt="logo ligi fsd" src="/images/logo_fsd.png">
+            </a>
+            <a href="/liga" class="logo-fsd">
+                Liga Fast Drive School
+            </a>
+        </div>
+        <div class="categories">
+            <ul>
+                <li class="main-li"><a href="/liga">Strona Główna</a></li>
+                <li><a href="/porschecup/regulamin">Regulamin</a></li>
+                <li><a href="/porschecup/zawodnicy">Zawodnicy</a></li>
+                <div class="socials-mob">
+                    <a href="https://facebook.com"><i
+                            class="fa-brands fa-facebook-f"></i></i></a>
+                    <a href="https://twitch.com"><i
+                            class="fa-brands fa-twitch"></i></i></a>
+                    <a href="https://discord.com/channels/730309320876752996/730313785335873637"><i
+                            class="fa-brands fa-discord"></i></a>
+                    <a href="https://youtube.com"><i
+                            class="fa-brands fa-youtube"></i></i></a>
+                </div>
+            </ul>
+        </div>
+        <div
+                th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+            <span th:case="${false}"><a href="/logowanie" class="login-button">Zaloguj</a></span>
+            <div th:case="${true}">
+                <div class="dropdown" id="user-name">
+                    <span class="login-button-name" sec:authentication="name">Jan</span>
+                    <span><i class="fa-solid fa-angle-down"></i></span></div>
+                <div>
+                    <ul class="dropdown-ul">
+                        <li><a href="/zglos-incydent">Zgłoś incydent</a></li>
+                        <li><a href="/logout">Wyloguj</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="rules">
+        <div class="rules-overlay">
+            <ul>
+                <li><h1>Regulamin ligi Porsche Cup</h1></li>
+                <li>1. Informacje ogólne:
+                    <p>- Samochód: Porsche 911 GT3 Cup (992)</p>
+                    <p>- Ustawienia samochodu: odblokowane</p>
+                    <p>- Start z pól startowych</p>
+                    <p>- Ilość dostępnych incydentów 17/ po każdych kolejnych 6 następna kara</p>
+                    <p>- W wyścigach będzie dostępna jedna szybka naprawa</p></li>
+                <li>2. Kalendarz sezonu:
+                    <p>- 24.04 – Suzuka International Racing Course – Grand Prix</p>
+                    <p>- 01.05 – Autodromo Nazionale Monza – Grand Prix</p>
+                    <p>- 15.05 – Cicuit de Spa-Francorchamps – Grand Prix Pits</p>
+                    <p>- 22.05 – Cicuit Park Zandvoort – Grand Prix</p>
+                    <p>- 29.05 - Hungaroring</p>
+                    <p>- 12.06 - Watkins Glen International - Boot</p></li>
+                <li>3. Sesja wyścigowa wystartuje w każdą niedzielę o godzinie 19:00 zgodnie z regulaminem
+                    sezonu, w następującym formacie:
+                    <p>- trening: 120 minut</p>
+                    <p>- kwalifikacje: 10 minut (4 okrążenia)</p>
+                    <p>- sprint: 20 minut</p>
+                    <p>- wyścig główny: 30 minut</p></li>
+                <li>3.1. Pierwsza 10 w sprincie zostanie odwrócona na starcie do wyścigu głównego.*</li>
+                <li>4. Punkty zdobywane w wyścigach:
+                    <p>Sprint:</p>
+                    <table class="table-points">
+                        <tbody>
+                        <tr>
+                            <td>#1</td>
+                            <td>30</td>
+                            <td>#2</td>
+                            <td>24</td>
+                            <td>#3</td>
+                            <td>20</td>
+                            <td>#4</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>#5</td>
+                            <td>16</td>
+                            <td>#6</td>
+                            <td>15</td>
+                            <td>#7</td>
+                            <td>14</td>
+                            <td>#8</td>
+                            <td>13</td>
+                        </tr>
+                        <tr>
+                            <td>#9</td>
+                            <td>12</td>
+                            <td>#10</td>
+                            <td>11</td>
+                            <td>#11</td>
+                            <td>10</td>
+                            <td>#12</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>#13</td>
+                            <td>8</td>
+                            <td>#14</td>
+                            <td>7</td>
+                            <td>#15</td>
+                            <td>6</td>
+                            <td>#16</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>#17</td>
+                            <td>4</td>
+                            <td>#18</td>
+                            <td>3</td>
+                            <td>#19</td>
+                            <td>2</td>
+                            <td>#20</td>
+                            <td>1</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <p>Wyścig główny:</p>
+                    <table class="table-points">
+                        <tbody>
+                        <tr>
+                            <td>#1</td>
+                            <td>40</td>
+                            <td>#2</td>
+                            <td>35</td>
+                            <td>#3</td>
+                            <td>32</td>
+                            <td>#4</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>#5</td>
+                            <td>28</td>
+                            <td>#6</td>
+                            <td>26</td>
+                            <td>#7</td>
+                            <td>24</td>
+                            <td>#8</td>
+                            <td>23</td>
+                        </tr>
+                        <tr>
+                            <td>#9</td>
+                            <td>22</td>
+                            <td>#10</td>
+                            <td>21</td>
+                            <td>#11</td>
+                            <td>20</td>
+                            <td>#12</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td>#13</td>
+                            <td>18</td>
+                            <td>#14</td>
+                            <td>17</td>
+                            <td>#15</td>
+                            <td>16</td>
+                            <td>#16</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>#17</td>
+                            <td>14</td>
+                            <td>#18</td>
+                            <td>13</td>
+                            <td>#19</td>
+                            <td>12</td>
+                            <td>#20</td>
+                            <td>11</td>
+                        </tr>
+                        <tr>
+                            <td>#21</td>
+                            <td>10</td>
+                            <td>#22</td>
+                            <td>9</td>
+                            <td>#23</td>
+                            <td>8</td>
+                            <td>#24</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>#25</td>
+                            <td>6</td>
+                            <td>#26</td>
+                            <td>5</td>
+                            <td>#27</td>
+                            <td>4</td>
+                            <td>#28</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>#29</td>
+                            <td>2</td>
+                            <td>#30</td>
+                            <td>1</td>
+                            <td>#31</td>
+                            <td>0</td>
+                            <td>#32</td>
+                            <td>0</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </li>
+                <li>4.1. Najsłabsza punktowo runda nie będzie zaliczana do klasyfikacji generalnej.</li>
+                <li>5. Nagrody:*
+                <li>5.1 Za pierwsze 3 miejsca przyznane zostaną nagrody:</li>
+                <p> - 1 miejsce: puchar, 10ir$, voucher na malowanie dowolnie wybranego samochodu w iracing,</p>
+                pamiątkowa koszulka
+                <p>- 2 miejsce: puchar, 10ir$</p>
+                <p>- 3 miejsce: puchar, 10ir$</p>
+                </li>
+                <li>5.2. Dodatkowe nagrody:
+                    <p>- Voucher na malowanie dowolnie wybranego samochodu w iracing za najlepszy bilans pozycji
+                    końcowej w stosunku do startowej w przeciągu pełnego sezonu (wszystkie rundy)</p>
+                    <p>- 10ir$ dla losowo wybranej osoby, która wzięła udział we wszystkich rundach sezonu</p></li>
+                <li>6. Kary:
+                    <p>- doliczenie dodatkowych sekund do wyników końcowych między innymi za: uderzenie w
+                        rywala i spowodowanie utratę pozycji</p>
+                    <p>- przesunięcie na koniec stawki następnego wyścigu między innymi za: nadmierną agresję i
+                        powtarzalne kolizje z rywalami podczas danej rundy</p>
+                    <p>- co najmniej wykluczenie z następnego wyścigu za: poważne kolizje, w których ucierpi większa liczba
+                        kierowców, karambole itd.</p></li>
+                <li>6.1. Nie każdy protest może zostać osądzony, sytuacje sporne bez ewidentnej winy będą traktowane
+                    jako incydenty wyścigowe.
+                </li>
+                <li>6.2. Kierowcy którzy regularnie będą powodowali kolizje, mogą się spodziewać bardziej surowych
+                    kar.
+                </li>
+                <li>6.3. Za spowodowanie kolizji podczas żółtych flag, możemy dodatkowo nałożyć karę, w przypadku
+                    niebezpieczeństwa na torze należy zwolnić, starając się uniknąć kolizji z rywalami
+                </li>
+                <li>6.4. Niebieska flaga zobowiązuje do możliwie najszybszego i bezpiecznego oddania pozycji
+                    kierowcom dublującym. Przeszkadzanie szybszym kierowcom może podlegać dodatkowej karze.
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div th:replace="fragments :: sponsors"></div>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+<script src="/js/show-button.js"></script>
+<script src="/js/burger.js"></script>
+<script>window.addEventListener("scroll", function () {
+    var navbar = document.querySelector(".navbar");
+    var logo = document.querySelector(".logo");
+    var arrow = document.querySelector("#arrow");
+    navbar.classList.toggle("sticky", window.scrollY > 100);
+    logo.classList.toggle("sticky", window.scrollY > 100);
+    arrow.classList.toggle("sticky", window.scrollY > 100);
+})</script>
+<script>var arrowup = document.querySelector("#arrow");
+arrowup.addEventListener("click", function (){
+    $("html, body").animate({scrollTop: 0}, "slow");
+})
+</script>
+</body>
+</html><!DOCTYPE html>

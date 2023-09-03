@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liga Fast Drive School</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/6b105a924a.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../styles/main.css">
+    <link rel="stylesheet" type="text/css" href="../styles/forms.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="background-league-img"><img src="/images/monza.png" alt="" srcset=""></div>
+    <nav class="navbar">
+        <div class="burger" id="burger">
+            <i class="fas fa-bars show" id="fas fa-bars"></i>
+            <i class="fas fa-times" id="fas fa-times"></i>
+        </div>
+        <div class="nav-left">
+            <a href="/liga" class="logo">
+                <img src="/images/logo_fsd.png" alt="Logo Ligi Fast Drive School">
+            </a>
+            <a href="/liga" class="logo-fsd">
+                Liga Fast Drive School
+            </a>
+        </div>
+        <div class="categories">
+            <ul>
+                <li class="main-li"><a href="/">GWR Team</a></li>
+                <li><a href="/liga/kontakt">Kontakt</a></li>
+            </ul>
+            <div class="socials-mob">
+                <a href="https://facebook.com"><i
+                        class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://twitch.com"><i
+                        class="fa-brands fa-twitch"></i></a>
+                <a href="https://discord.com/channels/730309320876752996/730313785335873637"><i
+                        class="fa-brands fa-discord"></i></a>
+                <a href="https://youtube.com"><i
+                        class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+        <div
+             th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+            <span th:case="${false}"><a href="/logowanie" class="login-button">Zaloguj</a></span>
+            <div th:case="${true}">
+                <div class="dropdown" id="user-name">
+                    <span class="login-button-name" sec:authentication="name">Jan</span>
+                <span><i class="fa-solid fa-angle-down"></i></span></div>
+                <div>
+                    <ul class="dropdown-ul">
+                        <li><a href="/zglos-incydent">Zgłoś incydent</a></li>
+                        <li><a href="/logout">Wyloguj</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="leagues-container">
+        <div class="league-box">
+            <div class="overlay">
+                <img src="/images/porschecup.png" alt="Porsche Cup" srcset="">
+                <h2>Porsche Cup Challenge</h2>
+                <div class="league-description"></div>
+                <a href="/porschecup">
+                    <div class="show-span"><span>Więcej szczegółów</span></div>
+                </a>
+                <div class="league-details-box">
+                    <span><i class="fa-solid fa-wrench"></i>Open</span>
+                    <span><i class="fa-solid fa-car"></i>Porsche Cup</span>
+                    <span><i class="fa-solid fa-road"></i>6 Wyścigów</span>
+                    <span><i class="fa-solid fa-clock"></i>20/30 min</span>
+                </div>
+            </div>
+        </div>
+        <div class="league-box">
+            <div class="overlay">
+                <a href="/gt4sprintseries"><img src="/images/gt4.png" alt="liga gt4"></a>
+                <h2>GT4 Sprint Series</h2>
+                <div class="league-description"></div>
+                <a href="/gt4sprintseries">
+                    <div class="show-span"><span>Więcej szczegółów</span></div>
+                </a>
+                <div class="league-details-box">
+                    <span><i class="fa-solid fa-wrench"></i>Fixed</span>
+                    <span><i class="fa-solid fa-car"></i>GT4</span>
+                    <span><i class="fa-solid fa-road"></i>6 Wyścigów</span>
+                    <span><i class="fa-solid fa-clock"></i>15/20 min</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="fragments :: sponsors"></div>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+<script src="/js/show-button.js"></script>
+<script src="/js/burger.js"></script>
+<script>window.addEventListener("scroll", function () {
+    var navbar = document.querySelector(".navbar");
+    var logo = document.querySelector(".logo");
+    navbar.classList.toggle("sticky", window.scrollY > 100);
+    logo.classList.toggle("sticky", window.scrollY > 100);
+})</script>
+</body>
+</html><!DOCTYPE html>

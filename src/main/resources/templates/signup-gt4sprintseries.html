@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Zapisy | GT4 Sprint Series | Liga FDS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/6b105a924a.js" crossorigin="anonymous"></script>
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="/styles/forms.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="background-league-img"><img src="/images/monza.png" alt="" srcset=""></div>
+    <nav class="navbar">
+        <div class="burger" id="burger">
+            <i class="fas fa-bars show" id="fas fa-bars"></i>
+            <i class="fas fa-times" id="fas fa-times"></i>
+        </div>
+        <div class="nav-left">
+            <a href="/liga" class="logo">
+                <img alt="logo ligi fsd" src="/images/logo_fsd.png">
+            </a>
+            <a href="/liga" class="logo-fsd">
+                Liga Fast Drive School
+            </a>
+        </div>
+        <div class="categories">
+            <ul>
+                <li class="main-li"><a href="/liga">Strona Główna</a></li>
+                <li><a href="/gt4sprintseries/regulamin">Regulamin</a></li>
+                <li><a href="/gt4sprintseries/zawodnicy">Zawodnicy</a></li>
+                <div class="socials-mob">
+                    <a href="https://facebook.com"><i
+                            class="fa-brands fa-facebook-f"></i></i></a>
+                    <a href="https://twitch.com"><i
+                            class="fa-brands fa-twitch"></i></i></a>
+                    <a href="https://discord.com/channels/730309320876752996/730313785335873637"><i
+                            class="fa-brands fa-discord"></i></a>
+                    <a href="https://youtube.com"><i
+                            class="fa-brands fa-youtube"></i></i></a>
+                </div>
+            </ul>
+        </div>
+        <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+            <span th:case="${false}"><a href="/logowanie" class="login-button">Zaloguj</a></span>
+            <span th:case="${true}">
+        <div class="dropdown" id="user-name">
+            <span class="login-button-name" sec:authentication="name">Jan</span>
+            <span><i class="fa-solid fa-angle-down"></i></span>
+            <div class="dropdown-background">
+                <ul class="dropdown-ul">
+                    <li><a href="/zglos-incydent">Zgłoś incydent</a></li>
+                    <li><a href="/logout">Wyloguj</a></li>
+                </ul>
+            </div>
+        </div>
+            </span>
+        </div>
+    </nav>
+    <div class="login-panel">
+        <div th:if="${param.success}">
+            <div class="alert alert-info">Rejestracja zakończona sukcesem
+            </div>
+        </div>
+        <h1>Dołącz do GT4 Sprint Series</h1>
+        <form th:action="@{/gt4sprintseries/zapisz-sie}" method="post" th:object="${player}">
+            <div class="user-form">
+                <select id="car" th:field="*{car}" required/>
+                <option>Porsche 718 Cayman GT4</option>
+                <option>McLaren 570S GT4</option>
+                <option>Aston Martin Vantage GT4</option>
+                <option>BMW M4 GT4</option>
+            </div>
+            <div class="user-form">
+                <input id="team" placeholder="Drużyna (nie wymagane)" th:field="*{team}"/>
+            </div>
+            <div><p><input type="checkbox" required> Akceptuję <a style="color: #015c7c" href="/gt4sprintseries/regulamin">Regulamin GT4 SS</a></p></div>
+            <div class="user-form-button">
+                <button type="submit">Zarejestruj</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div th:replace="fragments :: sponsors"></div>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+<script src="/js/show-button.js"></script>
+<script src="/js/burger.js"></script>
+<script>window.addEventListener("scroll", function () {
+    var navbar = document.querySelector(".navbar");
+    var logo = document.querySelector(".logo");
+    navbar.classList.toggle("sticky", window.scrollY > 100);
+    logo.classList.toggle("sticky", window.scrollY > 100);
+})</script>
+</body>
+</html><!DOCTYPE html>
